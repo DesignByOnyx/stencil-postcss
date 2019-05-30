@@ -13,7 +13,7 @@ export function postcss(opts: d.PluginOptions = {}) {
         return null;
       }
 
-      if (!context || !util.usePlugin(fileName)) {
+      if (!util.usePlugin(fileName)) {
         return null;
       }
 
