@@ -10,7 +10,7 @@ export function postcss(opts: d.PluginOptions = {}): d.Plugin {
     name: 'postcss',
     pluginType: 'css',
     transform(sourceText: string, fileName: string, context: d.PluginCtx) {
-      if (!opts.hasOwnProperty('plugins') || opts.plugins.length < 1) {
+      if (!opts.plugins || opts.plugins.length < 1) {
         return null;
       }
 
@@ -32,7 +32,7 @@ export function postcss(opts: d.PluginOptions = {}): d.Plugin {
       return new Promise<d.PluginTransformResults>(resolve => {
 
         postCss(renderOpts.plugins)
-          .process(renderOpts.data, {
+          .process(renderOpts.data || '', {
             from: fileName
           })
           .then(postCssResults => {
