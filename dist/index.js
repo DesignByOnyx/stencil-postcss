@@ -1,5 +1,5 @@
-import { isAbsolute, join } from 'path';
 import postCss from 'postcss';
+import { isAbsolute, join } from 'path';
 
 function loadDiagnostic(context, postcssError, filePath) {
     if (!postcssError || !context) {
@@ -136,6 +136,7 @@ function createResultsId(fileName) {
 function postcss(opts = {}) {
     return {
         name: 'postcss',
+        pluginType: 'css',
         transform(sourceText, fileName, context) {
             if (!opts.plugins || opts.plugins.length < 1) {
                 return null;
